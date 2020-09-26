@@ -81,239 +81,239 @@ export class PerftestStackAirlineStack extends cdk.Stack {
       ]
     }))
 
-    // const vpc = new ec2.Vpc(this, VPC_NAME, {
-    //   cidr: CIDR_BLOCK,
-    //   maxAzs: MAX_AZs
-    // })
+    const vpc = new ec2.Vpc(this, VPC_NAME, {
+      cidr: CIDR_BLOCK,
+      maxAzs: MAX_AZs
+    })
 
 
-    // const gatlingRepository = new ecr.Repository(this, ECR_GATLING_REPO_NAME, {
-    //   repositoryName: ECR_GATLING_REPO_NAME
-    // });
+    const gatlingRepository = new ecr.Repository(this, ECR_GATLING_REPO_NAME, {
+      repositoryName: ECR_GATLING_REPO_NAME
+    });
 
-    // const mockDataRepository = new ecr.Repository(this, ECR_MOCKDATA_REPO_NAME, {
-    //   repositoryName: ECR_MOCKDATA_REPO_NAME
-    // });
+    const mockDataRepository = new ecr.Repository(this, ECR_MOCKDATA_REPO_NAME, {
+      repositoryName: ECR_MOCKDATA_REPO_NAME
+    });
 
-    // const cluster = new ecs.Cluster(this, ECS_CLUSTER, {
-    //   vpc: vpc,
-    //   clusterName: ECS_CLUSTER
-    // });
+    const cluster = new ecs.Cluster(this, ECS_CLUSTER, {
+      vpc: vpc,
+      clusterName: ECS_CLUSTER
+    });
 
-    // const gatlingTaskDefinition = new ecs.FargateTaskDefinition(this, GATLING_FARGATE_TASK_DEF, {
-    //   family: GATLING_FARGATE_TASK_DEF,
-    //   executionRole: role,
-    //   taskRole: role,
-    //   memoryLimitMiB: MEMORY_LIMIT,
-    //   cpu: CPU
-    // });
+    const gatlingTaskDefinition = new ecs.FargateTaskDefinition(this, GATLING_FARGATE_TASK_DEF, {
+      family: GATLING_FARGATE_TASK_DEF,
+      executionRole: role,
+      taskRole: role,
+      memoryLimitMiB: MEMORY_LIMIT,
+      cpu: CPU
+    });
 
-    // const mockDataTaskDefinition = new ecs.FargateTaskDefinition(this, MOCKDATA_FARGATE_TASK_DEF, {
-    //   family: MOCKDATA_FARGATE_TASK_DEF,
-    //   executionRole: role,
-    //   taskRole: role,
-    //   memoryLimitMiB: MEMORY_LIMIT,
-    //   cpu: CPU
-    // });
+    const mockDataTaskDefinition = new ecs.FargateTaskDefinition(this, MOCKDATA_FARGATE_TASK_DEF, {
+      family: MOCKDATA_FARGATE_TASK_DEF,
+      executionRole: role,
+      taskRole: role,
+      memoryLimitMiB: MEMORY_LIMIT,
+      cpu: CPU
+    });
 
-    // const gatlingLogging = new ecs.AwsLogDriver({
-    //   logGroup: new LogGroup(this, GATLING_CONTAINER_NAME, {
-    //     logGroupName: `/aws/ecs/${GATLING_CONTAINER_NAME}`,
-    //     retention: RetentionDays.ONE_WEEK
-    //   }),
-    //   streamPrefix: "gatling"
-    // })
+    const gatlingLogging = new ecs.AwsLogDriver({
+      logGroup: new LogGroup(this, GATLING_CONTAINER_NAME, {
+        logGroupName: `/aws/ecs/${GATLING_CONTAINER_NAME}`,
+        retention: RetentionDays.ONE_WEEK
+      }),
+      streamPrefix: "gatling"
+    })
 
-    // const mockDatalogging = new ecs.AwsLogDriver({
-    //   logGroup: new LogGroup(this, MOCKDATA_CONTAINER_NAME, {
-    //     logGroupName: `/aws/ecs/${MOCKDATA_CONTAINER_NAME}`,
-    //     retention: RetentionDays.ONE_WEEK
-    //   }),
-    //   streamPrefix: "mockdata"
-    // })
+    const mockDatalogging = new ecs.AwsLogDriver({
+      logGroup: new LogGroup(this, MOCKDATA_CONTAINER_NAME, {
+        logGroupName: `/aws/ecs/${MOCKDATA_CONTAINER_NAME}`,
+        retention: RetentionDays.ONE_WEEK
+      }),
+      streamPrefix: "mockdata"
+    })
 
-    // const tokenCSV = ssm.StringParameter.valueForStringParameter(this, `/${BRANCH_NAME}/service/loadtest/csv/token`);
-    // const userCSV = ssm.StringParameter.valueForStringParameter(this, `/${BRANCH_NAME}/service/loadtest/csv/user`);
-    // const loadtestBucket = ssm.StringParameter.valueForStringParameter(this, `/${BRANCH_NAME}/service/s3/loadtest/bucket`);
-    // const userPoolID = ssm.StringParameter.valueForStringParameter(this, `/${BRANCH_NAME}/service/amplify/auth/userpool/id`);
-    // const cognitoClientID = ssm.StringParameter.valueForStringParameter(this, `/${BRANCH_NAME}/service/amplify/auth/userpool/clientId`);
-    // const appsyncAPIKey = ssm.StringParameter.valueForStringParameter(this, `/${BRANCH_NAME}/service/amplify/api/id`)
-    // const appsyncURL = ssm.StringParameter.valueForStringParameter(this, `/${BRANCH_NAME}/service/amplify/api/url`)
-    // const cognitoURL = ssm.StringParameter.valueForStringParameter(this, `/${BRANCH_NAME}/service/auth/userpool/url`)
-    // const apiURL = ssm.StringParameter.valueForStringParameter(this, `/${BRANCH_NAME}/service/payment/api/charge/url`)
-    // const stripePublicKey = ssm.StringParameter.valueForStringParameter(this, `/${BRANCH_NAME}/service/payment/stripe/publicKey`)
-    // const userCount = ssm.StringParameter.valueForStringParameter(this, `/${BRANCH_NAME}/service/loadtest/usercount`)
-    // const duration = ssm.StringParameter.valueForStringParameter(this, `/${BRANCH_NAME}/service/loadtest/duration`)
+    const tokenCSV = ssm.StringParameter.valueForStringParameter(this, `/${BRANCH_NAME}/service/loadtest/csv/token`);
+    const userCSV = ssm.StringParameter.valueForStringParameter(this, `/${BRANCH_NAME}/service/loadtest/csv/user`);
+    const loadtestBucket = ssm.StringParameter.valueForStringParameter(this, `/${BRANCH_NAME}/service/s3/loadtest/bucket`);
+    const userPoolID = ssm.StringParameter.valueForStringParameter(this, `/${BRANCH_NAME}/service/amplify/auth/userpool/id`);
+    const cognitoClientID = ssm.StringParameter.valueForStringParameter(this, `/${BRANCH_NAME}/service/amplify/auth/userpool/clientId`);
+    const appsyncAPIKey = ssm.StringParameter.valueForStringParameter(this, `/${BRANCH_NAME}/service/amplify/api/id`)
+    const appsyncURL = ssm.StringParameter.valueForStringParameter(this, `/${BRANCH_NAME}/service/amplify/api/url`)
+    const cognitoURL = ssm.StringParameter.valueForStringParameter(this, `/${BRANCH_NAME}/service/auth/userpool/url`)
+    const apiURL = ssm.StringParameter.valueForStringParameter(this, `/${BRANCH_NAME}/service/payment/api/charge/url`)
+    const stripePublicKey = ssm.StringParameter.valueForStringParameter(this, `/${BRANCH_NAME}/service/payment/stripe/publicKey`)
+    const userCount = ssm.StringParameter.valueForStringParameter(this, `/${BRANCH_NAME}/service/loadtest/usercount`)
+    const duration = ssm.StringParameter.valueForStringParameter(this, `/${BRANCH_NAME}/service/loadtest/duration`)
 
-    // // Create container from local `Dockerfile` for Gatling
-    // const gatlingAppContainer = gatlingTaskDefinition.addContainer(GATLING_CONTAINER_NAME, {
-    //   image: ecs.ContainerImage.fromEcrRepository(gatlingRepository),
-    //   logging: gatlingLogging,
-    //   environment: {
-    //     "APPSYNC_URL": appsyncURL,
-    //     "API_URL": apiURL,
-    //     "COGNITO_URL": cognitoURL,
-    //     "S3_BUCKET": loadtestBucket,
-    //     "TOKEN_CSV": tokenCSV,
-    //     "STRIPE_PUBLIC_KEY": stripePublicKey,
-    //     "USER_COUNT": userCount,
-    //     "DURATION": duration
-    //   }
-    // });
+    // Create container from local `Dockerfile` for Gatling
+    const gatlingAppContainer = gatlingTaskDefinition.addContainer(GATLING_CONTAINER_NAME, {
+      image: ecs.ContainerImage.fromEcrRepository(gatlingRepository),
+      logging: gatlingLogging,
+      environment: {
+        "APPSYNC_URL": appsyncURL,
+        "API_URL": apiURL,
+        "COGNITO_URL": cognitoURL,
+        "S3_BUCKET": loadtestBucket,
+        "TOKEN_CSV": tokenCSV,
+        "STRIPE_PUBLIC_KEY": stripePublicKey,
+        "USER_COUNT": userCount,
+        "DURATION": duration
+      }
+    });
 
-    // const mockDataAppContainer = mockDataTaskDefinition.addContainer(MOCKDATA_CONTAINER_NAME, {
-    //   image: ecs.ContainerImage.fromEcrRepository(mockDataRepository),
-    //   logging: mockDatalogging,
-    //   environment: {
-    //     "TOKEN_CSV": tokenCSV,
-    //     "USER_CSV": userCSV,
-    //     "AWS_REGION": `${AWS_DEFAULT_REGION}`,
-    //     "S3_BUCKET": loadtestBucket,
-    //     "USER_POOL_ID": userPoolID,
-    //     "COGNITO_CLIENT_ID": cognitoClientID,
-    //     "FOLDERPATH": FOLDERPATH,
-    //     "APPSYNC_API_KEY": appsyncAPIKey,
-    //     "APPSYNC_URL": appsyncURL
-    //   }
-    // });
+    const mockDataAppContainer = mockDataTaskDefinition.addContainer(MOCKDATA_CONTAINER_NAME, {
+      image: ecs.ContainerImage.fromEcrRepository(mockDataRepository),
+      logging: mockDatalogging,
+      environment: {
+        "TOKEN_CSV": tokenCSV,
+        "USER_CSV": userCSV,
+        "AWS_REGION": `${AWS_DEFAULT_REGION}`,
+        "S3_BUCKET": loadtestBucket,
+        "USER_POOL_ID": userPoolID,
+        "COGNITO_CLIENT_ID": cognitoClientID,
+        "FOLDERPATH": FOLDERPATH,
+        "APPSYNC_API_KEY": appsyncAPIKey,
+        "APPSYNC_URL": appsyncURL
+      }
+    });
 
-    // // Step function for setting the load test
-    // const setupUsers = new sfn.Task(this, "Setup Users", {
-    //   task: new tasks.RunEcsFargateTask({
-    //     cluster,
-    //     taskDefinition: mockDataTaskDefinition,
-    //     assignPublicIp: true,
-    //     containerOverrides: [{
-    //       containerName: mockDataAppContainer.containerName,
-    //       command: Data.listAt('$.commands'),
-    //       environment: [
-    //         {
-    //           name: 'setup-users',
-    //           value: Context.taskToken
-    //         }
-    //       ]
-    //     }],
-    //     integrationPattern: ServiceIntegrationPattern.WAIT_FOR_TASK_TOKEN
-    //   })
-    // })
+    // Step function for setting the load test
+    const setupUsers = new sfn.Task(this, "Setup Users", {
+      task: new tasks.RunEcsFargateTask({
+        cluster,
+        taskDefinition: mockDataTaskDefinition,
+        assignPublicIp: true,
+        containerOverrides: [{
+          containerName: mockDataAppContainer.containerName,
+          command: Data.listAt('$.commands'),
+          environment: [
+            {
+              name: 'setup-users',
+              value: Context.taskToken
+            }
+          ]
+        }],
+        integrationPattern: ServiceIntegrationPattern.WAIT_FOR_TASK_TOKEN
+      })
+    })
 
-    // const loadFlights = new sfn.Task(this, "Load Flights", {
-    //   task: new tasks.RunEcsFargateTask({
-    //     cluster,
-    //     taskDefinition: mockDataTaskDefinition,
-    //     assignPublicIp: true,
-    //     containerOverrides: [{
-    //       containerName: mockDataAppContainer.containerName,
-    //       command: Data.listAt('$.commands'),
-    //       environment: [
-    //         {
-    //           name: 'load-flights',
-    //           value: Context.taskToken
-    //         }
-    //       ]
-    //     }],
-    //     integrationPattern: ServiceIntegrationPattern.WAIT_FOR_TASK_TOKEN
-    //   })
-    // })
+    const loadFlights = new sfn.Task(this, "Load Flights", {
+      task: new tasks.RunEcsFargateTask({
+        cluster,
+        taskDefinition: mockDataTaskDefinition,
+        assignPublicIp: true,
+        containerOverrides: [{
+          containerName: mockDataAppContainer.containerName,
+          command: Data.listAt('$.commands'),
+          environment: [
+            {
+              name: 'load-flights',
+              value: Context.taskToken
+            }
+          ]
+        }],
+        integrationPattern: ServiceIntegrationPattern.WAIT_FOR_TASK_TOKEN
+      })
+    })
 
-    // const runGatling = new sfn.Task(this, "Run Gatling", {
-    //   task: new tasks.RunEcsFargateTask({
-    //     cluster,
-    //     taskDefinition: gatlingTaskDefinition,
-    //     assignPublicIp: true,
-    //     containerOverrides: [{
-    //       containerName: gatlingAppContainer.containerName,
-    //       command: Data.listAt('$.commands'),
-    //       environment: [
-    //         {
-    //           name: 'run-gatling',
-    //           value: Context.taskToken
-    //         }
-    //       ]
-    //     }],
-    //     integrationPattern: ServiceIntegrationPattern.WAIT_FOR_TASK_TOKEN
-    //   })
-    // })
+    const runGatling = new sfn.Task(this, "Run Gatling", {
+      task: new tasks.RunEcsFargateTask({
+        cluster,
+        taskDefinition: gatlingTaskDefinition,
+        assignPublicIp: true,
+        containerOverrides: [{
+          containerName: gatlingAppContainer.containerName,
+          command: Data.listAt('$.commands'),
+          environment: [
+            {
+              name: 'run-gatling',
+              value: Context.taskToken
+            }
+          ]
+        }],
+        integrationPattern: ServiceIntegrationPattern.WAIT_FOR_TASK_TOKEN
+      })
+    })
 
-    // const consolidateReport = new sfn.Task(this, "Consolidate Report", {
-    //   task: new tasks.RunEcsFargateTask({
-    //     cluster,
-    //     taskDefinition: gatlingTaskDefinition,
-    //     assignPublicIp: true,
-    //     containerOverrides: [{
-    //       containerName: gatlingAppContainer.containerName,
-    //       command: Data.listAt('$.commands'),
-    //       environment: [
-    //         {
-    //           name: 'consolidate-report',
-    //           value: Context.taskToken
-    //         }
-    //       ]
-    //     }],
-    //     integrationPattern: ServiceIntegrationPattern.WAIT_FOR_TASK_TOKEN
-    //   })
-    // })
+    const consolidateReport = new sfn.Task(this, "Consolidate Report", {
+      task: new tasks.RunEcsFargateTask({
+        cluster,
+        taskDefinition: gatlingTaskDefinition,
+        assignPublicIp: true,
+        containerOverrides: [{
+          containerName: gatlingAppContainer.containerName,
+          command: Data.listAt('$.commands'),
+          environment: [
+            {
+              name: 'consolidate-report',
+              value: Context.taskToken
+            }
+          ]
+        }],
+        integrationPattern: ServiceIntegrationPattern.WAIT_FOR_TASK_TOKEN
+      })
+    })
 
-    // const cleanUp = new sfn.Task(this, "Clean Up", {
-    //   task: new tasks.RunEcsFargateTask({
-    //     cluster,
-    //     taskDefinition: mockDataTaskDefinition,
-    //     assignPublicIp: true,
-    //     containerOverrides: [{
-    //       containerName: mockDataAppContainer.containerName,
-    //       command: Data.listAt('$.commands'),
-    //       environment: [
-    //         {
-    //           name: 'clean-up',
-    //           value: Context.taskToken
-    //         }
-    //       ]
-    //     }],
-    //     integrationPattern: ServiceIntegrationPattern.WAIT_FOR_TASK_TOKEN
-    //   })
-    // })
+    const cleanUp = new sfn.Task(this, "Clean Up", {
+      task: new tasks.RunEcsFargateTask({
+        cluster,
+        taskDefinition: mockDataTaskDefinition,
+        assignPublicIp: true,
+        containerOverrides: [{
+          containerName: mockDataAppContainer.containerName,
+          command: Data.listAt('$.commands'),
+          environment: [
+            {
+              name: 'clean-up',
+              value: Context.taskToken
+            }
+          ]
+        }],
+        integrationPattern: ServiceIntegrationPattern.WAIT_FOR_TASK_TOKEN
+      })
+    })
 
-    // const stepfuncDefinition = setupUsers
-    //   .next(loadFlights)
-    //   .next(runGatling)
-    //   .next(consolidateReport)
-    //   .next(cleanUp)
+    const stepfuncDefinition = setupUsers
+      .next(loadFlights)
+      .next(runGatling)
+      .next(consolidateReport)
+      .next(cleanUp)
 
-    // const loadtestsfn = new sfn.StateMachine(this, STATE_MACHINE_NAME, {
-    //   stateMachineName: STATE_MACHINE_NAME,
-    //   definition: stepfuncDefinition
-    // })
+    const loadtestsfn = new sfn.StateMachine(this, STATE_MACHINE_NAME, {
+      stateMachineName: STATE_MACHINE_NAME,
+      definition: stepfuncDefinition
+    })
 
-    // const ecsLambda = new lambda.Function(this, "ecstasklambda", {
-    //   runtime: lambda.Runtime.NODEJS_10_X,
-    //   handler: "index.handler",
-    //   code: new lambda.AssetCode("lambda"),
-    //   functionName: `${STACK_NAME}-ecs-task-change`
-    // })
+    const ecsLambda = new lambda.Function(this, "ecstasklambda", {
+      runtime: lambda.Runtime.NODEJS_10_X,
+      handler: "index.handler",
+      code: new lambda.AssetCode("lambda"),
+      functionName: `${STACK_NAME}-ecs-task-change`
+    })
 
-    // ecsLambda.addToRolePolicy(new PolicyStatement({
-    //   actions: ["states:SendTaskSuccess"],
-    //   resources: [loadtestsfn.stateMachineArn]
-    // }))
+    ecsLambda.addToRolePolicy(new PolicyStatement({
+      actions: ["states:SendTaskSuccess"],
+      resources: [loadtestsfn.stateMachineArn]
+    }))
 
-    // const cwRule = new Rule(this, "cw-rule", {
-    //   description: "Rule that looks at ECS Task change state and triggers Lambda function",
-    //   enabled: true,
-    //   ruleName: "ECS-task-change-cdk",
-    //   targets: [
-    //   ]
-    // })
+    const cwRule = new Rule(this, "cw-rule", {
+      description: "Rule that looks at ECS Task change state and triggers Lambda function",
+      enabled: true,
+      ruleName: "ECS-task-change-cdk",
+      targets: [
+      ]
+    })
 
-    // cwRule.addEventPattern({
-    //   source: ['aws.ecs'],
-    //   detailType: ["ECS Task State Change"],
-    //   detail: {
-    //     clusterArn: [cluster.clusterArn],
-    //     lastStatus: ["STOPPED"]
-    //   }
-    // })
+    cwRule.addEventPattern({
+      source: ['aws.ecs'],
+      detailType: ["ECS Task State Change"],
+      detail: {
+        clusterArn: [cluster.clusterArn],
+        lastStatus: ["STOPPED"]
+      }
+    })
 
-    // cwRule.addTarget(new targets.LambdaFunction(ecsLambda))
+    cwRule.addTarget(new targets.LambdaFunction(ecsLambda))
 
   }
 }
