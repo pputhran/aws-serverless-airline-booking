@@ -3,7 +3,7 @@ MAINTAINER Pawan Puthran (pputhran@amazon.com)
 
 WORKDIR /usr/src/app
 
-COPY setup-users.py load-flight-data.py cleanup.py requirements.txt user.csv ./
+COPY setup-users.py load-flight-data.py cleanup.py requirements.txt user.csv login-user.py ./
 
 RUN pip3 install awscli
 RUN pip3 install -r requirements.txt
