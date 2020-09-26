@@ -25,7 +25,7 @@ deploy: ##=> Deploy services
 	$(MAKE) deploy.booking
 	$(MAKE) deploy.loyalty
 ## Enable the deploy.perftest if you need to deploy the performance test stack
-#	$(MAKE) deploy.perftest 
+	$(MAKE) deploy.perftest 
 
 delete: ##=> Delete services
 	$(MAKE) delete.booking

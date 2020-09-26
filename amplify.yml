@@ -44,6 +44,8 @@ backend:
         - make export.parameter NAME=" /${AWS_BRANCH}/service/loadtest/usercount" VALUE=5
         - make export.parameter NAME=" /${AWS_BRANCH}/service/loadtest/csv/token" VALUE=user-with-token.csv
         - make export.parameter NAME=" /${AWS_BRANCH}/service/loadtest/csv/user" VALUE=user.csv
+        - make export.parameter NAME="/${AWS_BRANCH}/service/loadtest/duration" VALUE=300
+        - make export.parameter NAME="/${AWS_BRANCH}/service/s3/loadtest/bucket" VALUE=${STACK_NAME}-loadtest
         ##
         # Deploy SAM based back-end
         ##
